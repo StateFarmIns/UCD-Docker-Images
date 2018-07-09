@@ -28,6 +28,10 @@ ARG AGENT_HOME=/opt/ibm-ucd/agent
 
 RUN /bin/sh /tmp/agent-setup.sh
 
+#creae volume at agent install location so container state/configuration
+# will persist through restarts or starts with containers of same name
+VOLUME /opt/ibm-ucd/agent
+
 # Set work directory for/and command
 WORKDIR /tmp
 CMD ["sh", "startAgent.sh"]
